@@ -1110,6 +1110,26 @@ PrefabInstance:
       value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 2685653445281561921, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 41868da46b4e5a44eb3067cc60a3854c, type: 3}
+    - target: {fileID: 2685653445281561921, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685653445281561921, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685653445281561921, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685653445281561921, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685653445281561921, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
@@ -1202,7 +1222,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2685653444388429902, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
+    - {fileID: 2685653444332608989, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2685653446012803045, guid: fbbbf533ff035b24c88cde8f5598af25, type: 3}
       insertIndex: 0
