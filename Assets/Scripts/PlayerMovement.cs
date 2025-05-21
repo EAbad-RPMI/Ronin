@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /* Albert Sanchez
 * Script para manejar el movimiento del jugador
@@ -45,10 +46,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //movimiento horizontal con A/D
-        moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-
         //girar el jugador
         if (moveInput > 0)
             transform.localScale = new Vector3(1, 2, 1);
@@ -85,6 +82,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 targetPosition = new Vector3(camara.position.x, targetY, camara.position.z);
         camara.position = Vector3.SmoothDamp(camara.position, targetPosition, ref velocidadCam, suavizadoCam);
 
+    }
+
+    public void OnMove()
+    {
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
     }
 
     //gizmo para pruebas

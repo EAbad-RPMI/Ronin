@@ -11,6 +11,8 @@ public class pausarJuego : MonoBehaviour
 
     //GameObject del menu de pausa
     public GameObject menuPausa;
+    public GameObject panel;
+    public GameObject textoTut;
 
     //bool para saber si esta pausado
     public bool pausado;
@@ -20,6 +22,8 @@ public class pausarJuego : MonoBehaviour
     {
         //Desactivamos el menu de pausa
         menuPausa.SetActive(false);
+        panel.SetActive(true);
+        textoTut.SetActive(true);
     }
 
     // Update is called once per frame
@@ -44,6 +48,8 @@ public class pausarJuego : MonoBehaviour
 
         //Activamos el menu de pausa
         menuPausa.SetActive(true);
+        panel.SetActive(false);
+        textoTut.SetActive(false);
 
         //Paramos el tiempo de juego
         Time.timeScale = 0f;
@@ -57,6 +63,8 @@ public class pausarJuego : MonoBehaviour
 
         //Desactivamos el menu de pausa
         menuPausa.SetActive(false);
+        panel.SetActive(true);
+        textoTut.SetActive(true);
 
         //Reanudamos el tiempo de juego
         Time.timeScale = 1f;

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Ronin_v2.sln"
+    "dotnet.defaultSolution": "Ronin_v3.sln"
 }

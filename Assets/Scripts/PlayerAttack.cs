@@ -18,10 +18,10 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        //si hacemos click izquierdo se ataca
+        /*//si hacemos click izquierdo se ataca
         if (Input.GetMouseButtonDown(0)) {
             Attack();
-        }
+        }*/
     }
 
     //metodo de ataque

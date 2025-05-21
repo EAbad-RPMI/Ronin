@@ -38,14 +38,14 @@ public class PlayerClimb : MonoBehaviour
     void Update()
     {
         //movimiento horizontal
-        float moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        /*float moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);*/
 
         //comprobamos si hay una pared escalable delante
         bool wallDetected = Physics2D.Raycast(wallCheck.position, Vector2.right * transform.localScale.x, wallDetectionDistance, wallLayer);
 
         //escalamos si hay pared y le damos a W
-        if (wallDetected && Input.GetKey(KeyCode.W))
+        /*if (wallDetected && Input.GetKey(KeyCode.W))
         {
             isClimbing = true;
         }
@@ -60,7 +60,7 @@ public class PlayerClimb : MonoBehaviour
         if (isClimbing)
         {
             rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
-        }
+        }*/
     }
 
     //gizmo de prueba
