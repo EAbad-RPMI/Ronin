@@ -16,18 +16,22 @@ public class PlayerAttack : MonoBehaviour
     //capas de enemigos
     public LayerMask enemyCheck;
 
+    public AudioManager SFX;
+
     void Update()
     {
-        /*//si hacemos click izquierdo se ataca
+        //si hacemos click izquierdo se ataca
         if (Input.GetMouseButtonDown(0)) {
             Attack();
-        }*/
+        }
     }
 
     //metodo de ataque
     void Attack() {
 
         //animacion ataque
+
+        SFX.PlaySFX(SFX.espada);
 
         //generamos un array de enemigos golpeados
         Collider2D[] enemigos = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyCheck);

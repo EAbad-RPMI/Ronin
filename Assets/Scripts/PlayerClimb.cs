@@ -29,6 +29,8 @@ public class PlayerClimb : MonoBehaviour
     //bool de escalada
     private bool isClimbing = false;
 
+    public AudioManager SFX;
+
     void Start()
     {
         //rigidBody del jugador
@@ -37,17 +39,14 @@ public class PlayerClimb : MonoBehaviour
 
     void Update()
     {
-        //movimiento horizontal
-        /*float moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);*/
-
         //comprobamos si hay una pared escalable delante
         bool wallDetected = Physics2D.Raycast(wallCheck.position, Vector2.right * transform.localScale.x, wallDetectionDistance, wallLayer);
 
         //escalamos si hay pared y le damos a W
-        /*if (wallDetected && Input.GetKey(KeyCode.W))
+        if (wallDetected && Input.GetKey(KeyCode.W))
         {
             isClimbing = true;
+            SFX.GetComponent<AudioManager>().PlaySFX(SFX.escalar);
         }
 
         //dejamos de escalar si deja de haber pared o dejan de escalar
@@ -60,7 +59,7 @@ public class PlayerClimb : MonoBehaviour
         if (isClimbing)
         {
             rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
-        }*/
+        }
     }
 
     //gizmo de prueba

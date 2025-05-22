@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     public Image healthBar;
     public float healthAmount = 60f;
 
+    public AudioManager SFX;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
         {
             //perdemos 20 puntos de vida
             perderVida(20f);
+            SFX.PlaySFX(SFX.dolor);
         }
 
         //si presionamos el 5 la vida baja

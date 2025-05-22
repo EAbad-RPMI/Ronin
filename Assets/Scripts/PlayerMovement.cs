@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     //velocidad de la camra
     private Vector3 velocidadCam = Vector3.zero;
 
+    public AudioManager SFX;
+
     void Start()
     {
         //rigidBody del jugador
@@ -55,11 +57,25 @@ public class PlayerMovement : MonoBehaviour
         //comprobar si el jugador está en el suelo
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        //salto presionando el SPACE
-        if (Input.GetButtonDown("Jump") && isGrounded)
+    }
+
+    public void OnMove(InputValue value)
+    {
+        rb.velocity = value.Get<Vector2>() * moveSpeed;
+        if (isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            SFX.PlaySFX(SFX.correr);
         }
+        
+    }
+
+    public void OnJump(InputValue value)
+    {
+        //comprobar si el jugador está en el suelo
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        SFX.GetComponent<AudioManager>().PlaySFX(SFX.salto);
 
         //Despues de saltar, volvemos a poner la posicion actual de la camara
         float targetY = camara.position.y;
@@ -82,11 +98,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 targetPosition = new Vector3(camara.position.x, targetY, camara.position.z);
         camara.position = Vector3.SmoothDamp(camara.position, targetPosition, ref velocidadCam, suavizadoCam);
 
-    }
-
-    public void OnMove()
-    {
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
     }
 
     //gizmo para pruebas
