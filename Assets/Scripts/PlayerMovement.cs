@@ -40,20 +40,20 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioManager SFX;
 
+    public Animator animator;
+    
+    private SpriteRenderer render;
+
     void Start()
     {
         //rigidBody del jugador
         rb = GetComponent<Rigidbody2D>();
+        animator.GetComponent<Animation>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        //girar el jugador
-        if (moveInput > 0)
-            transform.localScale = new Vector3(1, 2, 1);
-        else if (moveInput < 0)
-            transform.localScale = new Vector3(-1, 2, 1);
-
         //comprobar si el jugador está en el suelo
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
@@ -62,8 +62,44 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputValue value)
     {
         rb.velocity = value.Get<Vector2>() * moveSpeed;
+
+        // Mover al personaje
+        Vector2 moveInput = value.Get<Vector2>();
+        rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
+
+        // Solo nos interesa el eje horizontal (x)
+        float horizontalInput = moveInput.x;
+
+        // Girar el jugador según la dirección del movimiento
+        if (horizontalInput > 0.1f)  // Movimiento a la derecha
+        {
+            if(transform.localScale.x < 0)
+            {
+                render.flipX = true;
+            } else
+            {
+                render.flipX = false;
+            }
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (horizontalInput < -0.1f)  // Movimiento a la izquierda
+        {
+            if (transform.localScale.x < 0)
+            {
+                render.flipX = false;
+            }
+            else
+            {
+                render.flipX = true;
+            }
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
         if (isGrounded)
         {
+            float velocidadHorizontal = Mathf.Abs(rb.velocity.x);
+            animator.SetFloat("Velocidad_Correr", velocidadHorizontal);
+
             SFX.PlaySFX(SFX.correr);
         }
         
@@ -71,33 +107,39 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        //comprobar si el jugador está en el suelo
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        SFX.GetComponent<AudioManager>().PlaySFX(SFX.salto);
-
-        //Despues de saltar, volvemos a poner la posicion actual de la camara
-        float targetY = camara.position.y;
-
-        //Si el jugador está mas de una unidad por encima de la camara
-        if (transform.position.y > camara.position.y + 1)
+        // Solo saltar si el valor de entrada es positivo (botón presionado)
+        if (value.isPressed)
         {
-            //La camara pasara a estar dos unidades por encima del jugador
-            targetY = transform.position.y + 2;
+            // Comprobar si el jugador está en el suelo
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
+            // Solo saltar si está en el suelo
+            if (isGrounded)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                SFX.GetComponent<AudioManager>().PlaySFX(SFX.salto);
+
+                // Después de saltar, ajustamos la posición de la cámara
+                float targetY = camara.position.y;
+
+                // Si el jugador está más de una unidad por encima de la cámara
+                if (transform.position.y > camara.position.y + 1)
+                {
+                    // La cámara pasará a estar dos unidades por encima del jugador
+                    targetY = transform.position.y + 2;
+                }
+                // Si el jugador está más de dos unidades por debajo de la cámara
+                else if (transform.position.y < camara.position.y - 2)
+                {
+                    // La cámara pasará a estar dos unidades por encima del jugador
+                    targetY = transform.position.y + 2;
+                }
+
+                // Actualizamos la posición donde debería estar la cámara y la movemos
+                Vector3 targetPosition = new Vector3(camara.position.x, targetY, camara.position.z);
+                camara.position = Vector3.SmoothDamp(camara.position, targetPosition, ref velocidadCam, suavizadoCam);
+            }
         }
-
-        // Si el jugador está más de dos unidades por debajo de la cámara
-        else if (transform.position.y < camara.position.y - 2)
-        {
-            //La camara pasara a estar dos unidades por encima del jugador
-            targetY = transform.position.y + 2;
-        }
-
-        //Actualizamos la posicion donde deberia estar la camara y la movemos
-        Vector3 targetPosition = new Vector3(camara.position.x, targetY, camara.position.z);
-        camara.position = Vector3.SmoothDamp(camara.position, targetPosition, ref velocidadCam, suavizadoCam);
-
     }
 
     //gizmo para pruebas
