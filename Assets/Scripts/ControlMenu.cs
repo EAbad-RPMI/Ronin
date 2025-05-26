@@ -10,7 +10,7 @@ public class ControlMenu : MonoBehaviour
 {
     //Metodo para cargar la escena del juego
     public void Jugar() {
-        SceneManager.LoadScene("Juego");
+        SceneManager.LoadScene("Cinematica");
     }
 
     //Metodo para salir del juego

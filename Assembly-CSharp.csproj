@@ -63,8 +63,10 @@
     <Compile Include="Assets\Scripts\pausarJuego.cs" />
     <Compile Include="Assets\Scripts\ControlMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerClimb.cs" />
+    <Compile Include="Assets\Scripts\ControlCinematica.cs" />
     <Compile Include="Assets\Scripts\MoverCamara.cs" />
     <Compile Include="Assets\Scripts\ControlTutorial.cs" />
+    <Compile Include="Assets\Scripts\CinematicMusic.cs" />
     <Compile Include="Assets\Scripts\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\MusicBoss.cs" />
     <Compile Include="Assets\Scripts\Enemigo.cs" />
