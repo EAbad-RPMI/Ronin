@@ -8,6 +8,11 @@ using UnityEngine.SceneManagement;
 */
 public class ControlMenu : MonoBehaviour
 {
+    public GameObject pausa;
+    public GameObject jugar;
+    public GameObject opciones;
+    public GameObject salir;
+
     //Metodo para cargar la escena del juego
     public void Jugar() {
         SceneManager.LoadScene("Cinematica");
@@ -20,7 +25,10 @@ public class ControlMenu : MonoBehaviour
 
     //Metodo para abrir las opciones
     public void Opciones() {
-
+        pausa.SetActive(false);
+        jugar.SetActive(false);
+        opciones.SetActive(false);
+        salir.SetActive(false);
     }
 
     //Metodo para cargar la escena del menu

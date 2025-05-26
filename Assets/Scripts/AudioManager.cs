@@ -19,6 +19,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip correr;
     public AudioClip flecha;
 
+    //public Slider volumeSlider;
+
     private void Start()
     {
         MusicSource.clip = Backgroud;
