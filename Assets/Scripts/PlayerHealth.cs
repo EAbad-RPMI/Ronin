@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
     //Imagen de la barra de vida y la cantidad de vida
-    public Image healthBar;
+    public GameObject healthBar;
     public float healthAmount = 60f;
 
     public AudioManager SFX;
@@ -25,6 +25,11 @@ public class PlayerHealth : MonoBehaviour
     public GameObject panelTut;
 
     public GameObject botonPausa;
+
+    public Sprite vidaFull;
+    public Sprite vidaDos;
+    public Sprite vidaUno;
+    public Sprite vidaZero;
 
 
     void Start()
@@ -59,7 +64,8 @@ public class PlayerHealth : MonoBehaviour
 
         //le quitamos la cantidad de vida y llenamos la barra acordemente
         healthAmount -= damage;
-        healthBar.fillAmount = healthAmount / 60f;
+        ActualizarBarra();
+        //healthBar.fillAmount = healthAmount / 60f;
 
         if (healthAmount == 0 && !muerto)
         {
@@ -73,8 +79,31 @@ public class PlayerHealth : MonoBehaviour
 
         //le aumentamos la cantidad de vida, vemos que no se pase y llenamos la barra acordemente
         healthAmount += cura;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 60);
-        healthBar.fillAmount = healthAmount / 60f;
+        ActualizarBarra();
+        //healthAmount = Mathf.Clamp(healthAmount, 0, 60);
+        //healthBar.fillAmount = healthAmount / 60f;
+    }
+
+    public void ActualizarBarra()
+    {
+        Image healthImage = healthBar.GetComponent<Image>(); // Obtén el componente una sola vez
+
+        if (healthAmount >= 60f)
+        {
+            healthImage.sprite = vidaFull;
+        }
+        else if (healthAmount >= 40f)
+        {
+            healthImage.sprite = vidaDos;
+        }
+        else if (healthAmount >= 20f)
+        {
+            healthImage.sprite = vidaUno;
+        }
+        else if (healthAmount >= 0f)
+        {
+            healthImage.sprite = vidaZero;
+        }
     }
 
     public void Morir()
