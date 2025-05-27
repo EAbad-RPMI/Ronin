@@ -61,6 +61,7 @@ public class PlayerHealth : MonoBehaviour
     {
 
         SFX.PlaySFX(SFX.dolor);
+        animator.SetBool("Daño", true);
 
         //le quitamos la cantidad de vida y llenamos la barra acordemente
         healthAmount -= damage;
@@ -124,5 +125,10 @@ public class PlayerHealth : MonoBehaviour
         panelTut.SetActive(false);
         botonPausa.SetActive(false);
         Time.timeScale = 0f;
+    }
+
+    public void PararDamage()
+    {
+        animator.SetBool("Daño", false);
     }
 }

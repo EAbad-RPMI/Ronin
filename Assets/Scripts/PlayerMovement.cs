@@ -89,11 +89,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            animator.SetBool("Salto", false);
             float velocidadHorizontal = Mathf.Abs(rb.velocity.x);
             animator.SetFloat("Velocidad_Correr", velocidadHorizontal);
 
             SFX.PlaySFX(SFX.correr);
+            animator.SetBool("Salto", false);
         }
 
     }

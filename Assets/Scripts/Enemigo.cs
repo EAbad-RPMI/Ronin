@@ -12,11 +12,25 @@ public class Enemigo : MonoBehaviour
     public int vidaMax;
     int vidaActual;
 
+    //alcance del ataque
+    public float attackRange = 1f;
+
+    //punto donde se ataca
+    public Transform attackPoint;
+
+    //capas de enemigos
+    public LayerMask enemyCheck;
+
+    public AudioManager SFX;
+
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         //le damos el valor de vida
         vidaActual = vidaMax;
+        animator.GetComponent<Animation>();
     }
 
     //metodo para que los enemigos pierdan vida
@@ -44,5 +58,46 @@ public class Enemigo : MonoBehaviour
         //deshabilitamos la colision y el objeto en si
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
+    }
+
+    void Update()
+    {
+        /*//si hacemos click izquierdo se ataca
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attack();
+        }*/
+    }
+
+    //metodo de ataque
+    void Attack()
+    {
+
+        /*animator.SetBool("Ataque", true);
+
+        SFX.PlaySFX(SFX.espada);
+
+        //generamos un array de enemigos golpeados
+        Collider2D[] enemigos = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyCheck);
+
+        //por cada enemigo golpeado le hacemos perder vida
+        foreach (Collider2D enemigo in enemigos)
+        {
+            enemigo.GetComponent<Enemigo>().perderVida(20);
+        }*/
+    }
+
+    public void FinalizarAtaque()
+    {
+        animator.SetBool("Ataque", false);
+    }
+
+    //gizmo de prueba
+    private void OnDrawGizmosSelected()
+    {
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+
     }
 }
