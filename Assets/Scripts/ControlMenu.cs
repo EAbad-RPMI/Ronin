@@ -8,13 +8,16 @@ using UnityEngine.SceneManagement;
 */
 public class ControlMenu : MonoBehaviour
 {
-
+    //Panel del menu
     public GameObject Panel_Menu;
+
+    //Panel de las opciones
     public GameObject Panel_Opciones;
 
+    //Efectos de sonido del menu
     public MenuMusic SFX;
 
-    //Metodo para cargar la escena del juego
+    //Metodo para cargar la escena de cinematica y reproducimos el efecto
     public void Jugar()
     {
         SceneManager.LoadScene("Cinematica");
@@ -27,13 +30,14 @@ public class ControlMenu : MonoBehaviour
         Application.Quit();
     }
 
+    //Metodo para reiniciar la escena del juego
     public void Reiniciar()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
 
-    //Metodo para abrir las opciones
+    //Metodo para activar las opciones
     public void Opciones()
     {
         Panel_Menu.SetActive(false);
@@ -41,6 +45,7 @@ public class ControlMenu : MonoBehaviour
         SFX.PlaySFX();
     }
 
+    //Metodo para volver al menu principal
     public void Volver()
     {
         Panel_Menu.SetActive(true);

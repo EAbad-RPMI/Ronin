@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Edgar Abad
+* Script para manejar la musica del juego
+*/
 public class AudioManager : MonoBehaviour
 {
+    //Source de la musica
     public AudioSource MusicSource;
+
+    //Source de los efectos
     public AudioSource SFXSource;
 
-    //Musica
+    //Musicas
     public AudioClip Backgroud;
     public AudioClip BackgroudBoss;
 
-    //SFX
+    //efectos
     public AudioClip salto;
     public AudioClip espada;
     public AudioClip escalar;
@@ -19,14 +25,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip correr;
     public AudioClip flecha;
 
-    //public Slider volumeSlider;
-
+    //Reproducimos la musica de fondo
     private void Start()
     {
         MusicSource.clip = Backgroud;
-        //MusicSource.Play();
+        MusicSource.Play();
     }
 
+    //Reproducimos la musica del boss
     public void Boss()
     {
         MusicSource.Stop();
@@ -34,6 +40,7 @@ public class AudioManager : MonoBehaviour
         MusicSource.Play();
     }
 
+    //Reproducimos el SFX que nos pasen
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);

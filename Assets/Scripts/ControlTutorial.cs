@@ -45,7 +45,7 @@ public class ControlTutorial : MonoBehaviour
 
                 //si es el segundo es el de salto
                 case 3:
-                    textTut.text = "Click izquierdo para atacar";
+                    textTut.text = "Click izquierdo para atacar\nClick derecho para bloquer ataques";
                     panel.color = new Color32(145, 145, 145, 204);
                     break;
 

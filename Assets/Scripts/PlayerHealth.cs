@@ -14,18 +14,25 @@ public class PlayerHealth : MonoBehaviour
     public GameObject healthBar;
     public float healthAmount = 60f;
 
+    //Manager de SFX
     public AudioManager SFX;
 
+    //Animator del GameObject
     public Animator animator;
 
+    //bool de si estÃ¡ muerto
     bool muerto = false;
 
+    //Panel de muerte
     public GameObject panelMuerto;
 
+    //Panel de tutorial
     public GameObject panelTut;
 
+    //Boton de pausa
     public GameObject botonPausa;
 
+    //Sprites de la barra de vida
     public Sprite vidaFull;
     public Sprite vidaDos;
     public Sprite vidaUno;
@@ -34,13 +41,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        //animator del GameObject
         animator.GetComponent<Animation>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //si presionamos el 4 la vida baja
+        //Metodos de pruebas
+        /*//si presionamos el 4 la vida baja
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             //perdemos 20 puntos de vida
@@ -52,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
         {
             //ganamos 20 puntos de vida
             ganarVida(20f);
-        }
+        }*/
 
     }
 
@@ -60,16 +69,18 @@ public class PlayerHealth : MonoBehaviour
     public void perderVida(float damage)
     {
 
+        //Reproducimos el SFX de dolor y la animacion
         SFX.PlaySFX(SFX.dolor);
-        animator.SetBool("Daño", true);
+        animator.SetBool("Damage", true);
 
-        //le quitamos la cantidad de vida y llenamos la barra acordemente
+        //le quitamos la cantidad de vida y actualizamos la barra acordemente
         healthAmount -= damage;
         ActualizarBarra();
-        //healthBar.fillAmount = healthAmount / 60f;
 
+        //si la vida es 0 y no hemos muerto antes
         if (healthAmount == 0 && !muerto)
         {
+            //llamamos al metodo morir
             Morir();
         }
     }
@@ -81,14 +92,15 @@ public class PlayerHealth : MonoBehaviour
         //le aumentamos la cantidad de vida, vemos que no se pase y llenamos la barra acordemente
         healthAmount += cura;
         ActualizarBarra();
-        //healthAmount = Mathf.Clamp(healthAmount, 0, 60);
-        //healthBar.fillAmount = healthAmount / 60f;
     }
 
+    //Metodo para actualizar la barra de vida
     public void ActualizarBarra()
     {
-        Image healthImage = healthBar.GetComponent<Image>(); // Obtén el componente una sola vez
+        //Cogemos el componente de la imagen
+        Image healthImage = healthBar.GetComponent<Image>(); // Obtï¿½n el componente una sola vez
 
+        //Cambiamos el sprite dependiendo de la cantidad de vida
         if (healthAmount >= 60f)
         {
             healthImage.sprite = vidaFull;
@@ -107,28 +119,39 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    //metodo de muerte al personaje
     public void Morir()
     {
+        //Si ya estamos muertos no hacemos nada
         if (muerto)
         {
             return;
         }
 
+        //Decimos que el personaje ha muerto y se lo pasamos al animator
         muerto = true;
         animator.SetBool("Muerto", true);
     }
 
+    //Metodo para parar la animacion de muerte
     public void PararMuerte()
     {
+        //Decimos al animator que no estÃ¡ muerto
         animator.SetBool("Muerto", false);
+
+        //Activamos el panel de muerte y desactivamos el resto
         panelMuerto.SetActive(true);
         panelTut.SetActive(false);
         botonPausa.SetActive(false);
+
+        //Paramos el tiempo del juego
         Time.timeScale = 0f;
     }
 
+    //Metodo para parar la animacion de damage
     public void PararDamage()
     {
-        animator.SetBool("Daño", false);
+        //Le decimos al animator que ya no le estan haciendo damage
+        animator.SetBool("Damage", false);
     }
 }

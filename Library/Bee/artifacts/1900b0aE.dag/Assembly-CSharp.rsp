@@ -381,15 +381,16 @@
 "Assets/Scripts/ControlMenu.cs"
 "Assets/Scripts/ControlTutorial.cs"
 "Assets/Scripts/Enemigo.cs"
+"Assets/Scripts/FinalJuego.cs"
 "Assets/Scripts/MenuMusic.cs"
 "Assets/Scripts/MoverCamara.cs"
 "Assets/Scripts/MusicBoss.cs"
-"Assets/Scripts/MusicControl.cs"
 "Assets/Scripts/pausarJuego.cs"
 "Assets/Scripts/PlayerAttack.cs"
 "Assets/Scripts/PlayerClimb.cs"
 "Assets/Scripts/PlayerHealth.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/SalirJuego.cs"
 -langversion:9.0
 /deterministic
 /optimize+

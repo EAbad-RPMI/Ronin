@@ -11,7 +11,11 @@ public class pausarJuego : MonoBehaviour
 
     //GameObject del menu de pausa
     public GameObject menuPausa;
+
+    //GameObject del panel
     public GameObject panel;
+
+    //GameObject del texto de tutorial
     public GameObject textoTut;
 
     //bool para saber si esta pausado
@@ -20,7 +24,7 @@ public class pausarJuego : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Desactivamos el menu de pausa
+        //Desactivamos el menu de pausa y activamos los de tutorial
         menuPausa.SetActive(false);
         panel.SetActive(true);
         textoTut.SetActive(true);
@@ -37,9 +41,8 @@ public class pausarJuego : MonoBehaviour
             if (pausado)
             {
                 Reanudar();
-
-                //Si el juego no esta pausado pausamos
             }
+            //Si el juego no esta pausado pausamos
             else
             {
                 Pausar();
@@ -51,7 +54,7 @@ public class pausarJuego : MonoBehaviour
     public void Pausar()
     {
 
-        //Activamos el menu de pausa
+        //Activamos el menu de pausa y desactivamos los de tutorial
         menuPausa.SetActive(true);
         panel.SetActive(false);
         textoTut.SetActive(false);
@@ -67,7 +70,7 @@ public class pausarJuego : MonoBehaviour
     public void Reanudar()
     {
 
-        //Desactivamos el menu de pausa
+        //Desactivamos el menu de pausa y activamos los de tutorial
         menuPausa.SetActive(false);
         panel.SetActive(true);
         textoTut.SetActive(true);

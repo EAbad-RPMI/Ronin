@@ -29,8 +29,10 @@ public class PlayerClimb : MonoBehaviour
     //bool de escalada
     private bool isClimbing = false;
 
+    //Manager de SFX
     public AudioManager SFX;
 
+    //animator
     public Animator animator;
 
     void Start()
@@ -53,6 +55,7 @@ public class PlayerClimb : MonoBehaviour
         //dejamos de escalar si deja de haber pared o dejan de escalar
         if (!wallDetected || !Input.GetKey(KeyCode.W))
         {
+            //decimos que no estamos escalando y se lo pasamos al animator
             isClimbing = false;
             animator.SetBool("Escalar", false);
         }
@@ -60,6 +63,7 @@ public class PlayerClimb : MonoBehaviour
         //escalar
         if (isClimbing)
         {
+            //actualizamos la velocidad y reproducimos la animacion y el SFX
             rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
             animator.SetBool("Escalar", true);
             SFX.GetComponent<AudioManager>().PlaySFX(SFX.escalar);

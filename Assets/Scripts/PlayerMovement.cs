@@ -38,21 +38,30 @@ public class PlayerMovement : MonoBehaviour
     //velocidad de la camra
     private Vector3 velocidadCam = Vector3.zero;
 
+    //Manager de SFX
     public AudioManager SFX;
 
+    //Animador del GameObject
     public Animator animator;
 
+    //SpriteRenderer del GameObject
     private SpriteRenderer render;
 
+    //punto de pared
     public Transform wallCheck;
 
+    //punto de ataque
     public Transform attackCheck;
 
     void Start()
     {
         //rigidBody del jugador
         rb = GetComponent<Rigidbody2D>();
+
+        //animator del jugador
         animator.GetComponent<Animation>();
+
+        //render del jugador
         render = GetComponent<SpriteRenderer>();
     }
 
@@ -62,8 +71,10 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
+    //Cuando el jugador se mueva
     public void OnMove(InputValue value)
     {
+        // le damos velocidad al player con el input
         rb.velocity = value.Get<Vector2>() * moveSpeed;
 
         // Mover al personaje
@@ -73,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         // Solo nos interesa el eje horizontal (x)
         float horizontalInput = moveInput.x;
 
-        // Girar el jugador según la dirección del movimiento
+        // Girar el jugador y los checks según la dirección del movimiento
         if (horizontalInput > 0.1f)
         {
             render.flipX = false;
@@ -87,45 +98,57 @@ public class PlayerMovement : MonoBehaviour
             attackCheck.localPosition = new Vector3(-1.5f, 0f, 0f);
         }
 
+        //Si estamos en el suelo
         if (isGrounded)
         {
+            //Le decimos al animator que haga la animación de correr
             float velocidadHorizontal = Mathf.Abs(rb.velocity.x);
             animator.SetFloat("Velocidad_Correr", velocidadHorizontal);
 
-            SFX.PlaySFX(SFX.correr);
+            //Le decimos al animator que deje de saltar
             animator.SetBool("Salto", false);
+
+            //Reproducimos el audio de correr
+            SFX.PlaySFX(SFX.correr);
         }
 
     }
 
+
+    //Cuando el jugador salta
     public void OnJump(InputValue value)
     {
-        // Solo saltar si el valor de entrada es positivo (botón presionado)
+        //Si el jugador está presionando el boton de salto
         if (value.isPressed)
         {
-            // Comprobar si el jugador está en el suelo
+            //vemos si el jugador está en el suelo
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-            // Solo saltar si está en el suelo
+            //Si está en el suelo
             if (isGrounded)
             {
+                //Le decimos al animator que salte
                 animator.SetBool("Salto", true);
+
+                //Actualizamos la velocidad del player
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+                //Reproducimos el audio de saltar
                 SFX.GetComponent<AudioManager>().PlaySFX(SFX.salto);
 
-                // Después de saltar, ajustamos la posición de la cámara
+                //Ajustamos la posición de la cámara
                 float targetY = camara.position.y;
 
-                // Si el jugador está más de una unidad por encima de la cámara
+                //Si el jugador está más de una unidad por encima de la cámara
                 if (transform.position.y > camara.position.y + 1)
                 {
-                    // La cámara pasará a estar dos unidades por encima del jugador
+                    //La cámara pasará a estar dos unidades por encima del jugador
                     targetY = transform.position.y + 2;
                 }
-                // Si el jugador está más de dos unidades por debajo de la cámara
+                //Si el jugador está más de dos unidades por debajo de la cámara
                 else if (transform.position.y < camara.position.y - 2)
                 {
-                    // La cámara pasará a estar dos unidades por encima del jugador
+                    //La cámara pasará a estar dos unidades por encima del jugador
                     targetY = transform.position.y + 2;
                 }
 
