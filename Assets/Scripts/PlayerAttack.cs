@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     //alcance del ataque
-    public float attackRange = 1f; 
+    public float attackRange = 1f;
 
     //punto donde se ataca
     public Transform attackPoint;
@@ -18,18 +18,27 @@ public class PlayerAttack : MonoBehaviour
 
     public AudioManager SFX;
 
+    public Animator animator;
+
+    void Start()
+    {
+        animator.GetComponent<Animation>();
+    }
+
     void Update()
     {
         //si hacemos click izquierdo se ataca
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             Attack();
         }
     }
 
     //metodo de ataque
-    void Attack() {
+    void Attack()
+    {
 
-        //animacion ataque
+        animator.SetBool("Ataque", true);
 
         SFX.PlaySFX(SFX.espada);
 
@@ -37,16 +46,23 @@ public class PlayerAttack : MonoBehaviour
         Collider2D[] enemigos = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyCheck);
 
         //por cada enemigo golpeado le hacemos perder vida
-        foreach (Collider2D enemigo in enemigos) {
+        foreach (Collider2D enemigo in enemigos)
+        {
             enemigo.GetComponent<Enemigo>().perderVida(20);
         }
     }
 
+    public void FinalizarAtaque()
+    {
+        animator.SetBool("Ataque", false);
+    }
+
     //gizmo de prueba
-    private void OnDrawGizmosSelected(){
+    private void OnDrawGizmosSelected()
+    {
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
-        
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+
     }
 }

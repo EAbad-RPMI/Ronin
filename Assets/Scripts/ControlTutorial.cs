@@ -14,20 +14,23 @@ public class ControlTutorial : MonoBehaviour
     public Image panel;
 
     //Cuando algo choque con el objeto
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
         //si es el jugador
-        if (collision.CompareTag("Player")) {
-            
+        if (collision.CompareTag("Player"))
+        {
+
             //dependiendo del numero del tutorial
-            switch(numTut) {
+            switch (numTut)
+            {
 
                 //si es el caso 0 es para borrar el texto
-                case 0: 
+                case 0:
                     textTut.text = "";
                     panel.color = new Color(1, 1, 1, 0);
                     break;
-                
+
                 //si es el primero es el de movimiento
                 case 1:
                     textTut.text = "Pulsa AD para moverte";
@@ -44,15 +47,15 @@ public class ControlTutorial : MonoBehaviour
                 case 3:
                     textTut.text = "Click izquierdo para atacar";
                     panel.color = new Color32(145, 145, 145, 204);
-                    break; 
-                
+                    break;
+
                 //si es el tercero es el de escalada
                 case 4:
                     textTut.text = "Pulsa W para escalar paredes grandes";
                     panel.color = new Color32(145, 145, 145, 204);
                     break;
             }
-            
+
         }
     }
 }

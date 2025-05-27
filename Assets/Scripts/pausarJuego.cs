@@ -30,21 +30,26 @@ public class pausarJuego : MonoBehaviour
     void Update()
     {
         //Si presionan ESC
-        if(Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
 
             //Si el juego esta pausado reanudamos
-            if(pausado) {
+            if (pausado)
+            {
                 Reanudar();
 
-            //Si el juego no esta pausado pausamos
-            } else {
+                //Si el juego no esta pausado pausamos
+            }
+            else
+            {
                 Pausar();
             }
         }
     }
 
     //Metodo para pausar el juego
-    public void Pausar() {
+    public void Pausar()
+    {
 
         //Activamos el menu de pausa
         menuPausa.SetActive(true);
@@ -59,7 +64,8 @@ public class pausarJuego : MonoBehaviour
     }
 
     //Metodo para reanudar el juego
-    public void Reanudar() {
+    public void Reanudar()
+    {
 
         //Desactivamos el menu de pausa
         menuPausa.SetActive(false);

@@ -10,12 +10,12 @@ public class PlayerMovement : MonoBehaviour
 {
     //velocidad del jugador
     public float moveSpeed = 5f;
-    
+
     //salto del jugador
     public float jumpForce = 10f;
 
     //punto de salto
-    public Transform groundCheck; 
+    public Transform groundCheck;
 
     //capas del suelo
     public LayerMask groundLayer;
@@ -41,8 +41,12 @@ public class PlayerMovement : MonoBehaviour
     public AudioManager SFX;
 
     public Animator animator;
-    
+
     private SpriteRenderer render;
+
+    public Transform wallCheck;
+
+    public Transform attackCheck;
 
     void Start()
     {
@@ -56,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
     {
         //comprobar si el jugador está en el suelo
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-
     }
 
     public void OnMove(InputValue value)
@@ -71,38 +74,28 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = moveInput.x;
 
         // Girar el jugador según la dirección del movimiento
-        if (horizontalInput > 0.1f)  // Movimiento a la derecha
+        if (horizontalInput > 0.1f)
         {
-            if(transform.localScale.x < 0)
-            {
-                render.flipX = true;
-            } else
-            {
-                render.flipX = false;
-            }
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            render.flipX = false;
+            wallCheck.localPosition = new Vector3(0.5f, -1.25f, 0f);
+            attackCheck.localPosition = new Vector3(1f, 0f, 0f);
         }
-        else if (horizontalInput < -0.1f)  // Movimiento a la izquierda
+        else if (horizontalInput < -0.1f)
         {
-            if (transform.localScale.x < 0)
-            {
-                render.flipX = false;
-            }
-            else
-            {
-                render.flipX = true;
-            }
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            render.flipX = true;
+            wallCheck.localPosition = new Vector3(-1f, -1.25f, 0f);
+            attackCheck.localPosition = new Vector3(-1.5f, 0f, 0f);
         }
 
         if (isGrounded)
         {
+            animator.SetBool("Salto", false);
             float velocidadHorizontal = Mathf.Abs(rb.velocity.x);
             animator.SetFloat("Velocidad_Correr", velocidadHorizontal);
 
             SFX.PlaySFX(SFX.correr);
         }
-        
+
     }
 
     public void OnJump(InputValue value)
@@ -116,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
             // Solo saltar si está en el suelo
             if (isGrounded)
             {
+                animator.SetBool("Salto", true);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 SFX.GetComponent<AudioManager>().PlaySFX(SFX.salto);
 

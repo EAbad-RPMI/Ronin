@@ -15,7 +15,7 @@ public class PlayerClimb : MonoBehaviour
     public float climbSpeed = 3f;
 
     //distancia de deteccion
-    public float wallDetectionDistance = 0.5f; 
+    public float wallDetectionDistance = 0.5f;
 
     //punto desde el que escalamos
     public Transform wallCheck;
@@ -30,6 +30,8 @@ public class PlayerClimb : MonoBehaviour
     private bool isClimbing = false;
 
     public AudioManager SFX;
+
+    public Animator animator;
 
     void Start()
     {
@@ -46,19 +48,21 @@ public class PlayerClimb : MonoBehaviour
         if (wallDetected && Input.GetKey(KeyCode.W))
         {
             isClimbing = true;
-            SFX.GetComponent<AudioManager>().PlaySFX(SFX.escalar);
         }
 
         //dejamos de escalar si deja de haber pared o dejan de escalar
         if (!wallDetected || !Input.GetKey(KeyCode.W))
         {
             isClimbing = false;
+            animator.SetBool("Escalar", false);
         }
 
         //escalar
         if (isClimbing)
         {
             rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
+            animator.SetBool("Escalar", true);
+            SFX.GetComponent<AudioManager>().PlaySFX(SFX.escalar);
         }
     }
 

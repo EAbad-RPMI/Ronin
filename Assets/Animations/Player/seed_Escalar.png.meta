@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: 73f57dc2c1b136c4b87c8f8712cdac55
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: seed_Escalar_13
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 422
+        width: 363
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5c2443d48ed5614ab5f320263053202
+      internalID: 762875708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seed_Escalar_19
+      rect:
+        serializedVersion: 2
+        x: 2714
+        y: 453
+        width: 358
+        height: 1072
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa5ac4ce9d031e640a1cc24a2a62dbc5
+      internalID: 829051912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      seed_Escalar_0: 1015047832
+      seed_Escalar_1: -799911351
+      seed_Escalar_10: -1749491740
+      seed_Escalar_11: -911941572
+      seed_Escalar_12: 1870649445
+      seed_Escalar_13: 762875708
+      seed_Escalar_14: -1552734499
+      seed_Escalar_15: -1174373400
+      seed_Escalar_16: -421773730
+      seed_Escalar_17: -436519306
+      seed_Escalar_18: 352658454
+      seed_Escalar_19: 829051912
+      seed_Escalar_2: 509773319
+      seed_Escalar_20: 1930367711
+      seed_Escalar_21: 978907191
+      seed_Escalar_22: -1419797921
+      seed_Escalar_23: 428099132
+      seed_Escalar_24: 515811411
+      seed_Escalar_25: -1978420000
+      seed_Escalar_26: 1263610700
+      seed_Escalar_27: 1234237869
+      seed_Escalar_28: 1346102550
+      seed_Escalar_29: 1235971574
+      seed_Escalar_3: -1733596688
+      seed_Escalar_30: 2117511911
+      seed_Escalar_31: -1268437037
+      seed_Escalar_32: 700864778
+      seed_Escalar_33: 459193849
+      seed_Escalar_34: 2085123991
+      seed_Escalar_35: 1837885650
+      seed_Escalar_36: -1861556582
+      seed_Escalar_37: -1524106650
+      seed_Escalar_38: 799838535
+      seed_Escalar_39: 1795459468
+      seed_Escalar_4: -1550038979
+      seed_Escalar_40: -156093454
+      seed_Escalar_41: 1599690071
+      seed_Escalar_42: 1429176500
+      seed_Escalar_43: -685960401
+      seed_Escalar_44: -1779364762
+      seed_Escalar_45: -1471628236
+      seed_Escalar_46: 1386400721
+      seed_Escalar_47: 894841001
+      seed_Escalar_48: 2123182506
+      seed_Escalar_49: -1656266891
+      seed_Escalar_5: -230183754
+      seed_Escalar_50: -1861712309
+      seed_Escalar_51: 303736356
+      seed_Escalar_52: -869690904
+      seed_Escalar_53: 106265697
+      seed_Escalar_54: 665830245
+      seed_Escalar_55: 62758238
+      seed_Escalar_56: -1965176374
+      seed_Escalar_57: 556356541
+      seed_Escalar_58: -651153843
+      seed_Escalar_59: -1032066143
+      seed_Escalar_6: 1233270397
+      seed_Escalar_60: 612285667
+      seed_Escalar_61: -132313149
+      seed_Escalar_62: 94693096
+      seed_Escalar_63: 276975554
+      seed_Escalar_64: 1796262871
+      seed_Escalar_65: -467385244
+      seed_Escalar_66: -546193661
+      seed_Escalar_67: -1955238685
+      seed_Escalar_68: 788951604
+      seed_Escalar_69: 2089462360
+      seed_Escalar_7: 898859029
+      seed_Escalar_70: -1960573609
+      seed_Escalar_71: 1577539694
+      seed_Escalar_72: -1173165079
+      seed_Escalar_73: -1325568774
+      seed_Escalar_74: -126027572
+      seed_Escalar_75: -226487229
+      seed_Escalar_76: -678988259
+      seed_Escalar_77: -1458807218
+      seed_Escalar_78: -2069642215
+      seed_Escalar_79: -1051655794
+      seed_Escalar_8: -727187769
+      seed_Escalar_80: -1757903443
+      seed_Escalar_81: -1949475058
+      seed_Escalar_82: -1820277399
+      seed_Escalar_83: -1848934351
+      seed_Escalar_84: -2134937182
+      seed_Escalar_9: -173149833
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

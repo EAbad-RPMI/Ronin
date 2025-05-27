@@ -20,7 +20,8 @@ public class Enemigo : MonoBehaviour
     }
 
     //metodo para que los enemigos pierdan vida
-    public void perderVida(int damage) {
+    public void perderVida(int damage)
+    {
 
         //le hacemos daño
         vidaActual -= damage;
@@ -28,18 +29,20 @@ public class Enemigo : MonoBehaviour
         //animacion daño
 
         //si la vida baja de 0, mueren
-        if (vidaActual <= 0){
+        if (vidaActual <= 0)
+        {
             morir();
         }
     }
 
     //metodo de morir
-    void morir() {
+    void morir()
+    {
 
         //animacion morir
 
         //deshabilitamos la colision y el objeto en si
         GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;    
+        this.enabled = false;
     }
 }
